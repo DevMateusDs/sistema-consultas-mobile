@@ -36,7 +36,7 @@ export default function PerfilMedicoScreen({ navigation, route }: Props) {
     buscarMedicoPorId(medicoId)
       .then((m) => {
         setMedico(m);
-        if (m.valorConsulta !== null) {
+        if (m.valorConsulta != null) {
           setValorConsulta(String(m.valorConsulta).replace(".", ","));
         }
       })
@@ -142,12 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  content: {
-    flexGrow: 1,
-    padding: 24,
-    paddingTop: 20,
-    paddingBottom: 40,
-  },
+  content: { flexGrow: 1, padding: 24, paddingTop: 20, paddingBottom: 40 },
   titulo: {
     fontSize: 24,
     fontWeight: "bold",

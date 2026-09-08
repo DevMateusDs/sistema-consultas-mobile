@@ -28,7 +28,7 @@ export default function EscolhaMedicoScreen({ navigation, route }: Props) {
     // Filtra apenas medicos ativos E com valor de consulta definido
     listarMedicosPorEspecialidade(especialidadeId)
       .then((lista) =>
-        setMedicos(lista.filter((m) => m.ativo && m.valorConsulta !== null))
+        setMedicos(lista.filter((m) => m.ativo && m.valorConsulta != null))
       )
       .finally(() => setCarregando(false));
   }, [especialidadeId]);
@@ -40,7 +40,9 @@ export default function EscolhaMedicoScreen({ navigation, route }: Props) {
         keyExtractor={(item) => String(item.id)}
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={
-          <Text style={styles.titulo}>Medicos de {especialidadeNome}</Text>
+          <Text style={styles.titulo}>
+            Medicos de {especialidadeNome}
+          </Text>
         }
         ListEmptyComponent={
           carregando ? (
@@ -74,13 +76,13 @@ export default function EscolhaMedicoScreen({ navigation, route }: Props) {
             <View style={styles.cardTextos}>
               <Text style={styles.cardNome}>{medico.nome}</Text>
               <Text style={styles.cardCrm}>CRM: {medico.crm}</Text>
-              {medico.valorConsulta !== null && (
+              {medico.valorConsulta != null && (
                 <Text style={styles.cardValor}>
                   R$ {medico.valorConsulta.toFixed(2).replace(".", ",")}
                 </Text>
               )}
             </View>
-            <Text style={styles.cardSeta}>{">"}</Text>
+            <Text style={styles.cardSeta}>-&gt;</Text>
           </TouchableOpacity>
         )}
       />
@@ -106,14 +108,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardTextos: { flex: 1 },
-  cardNome: { fontSize: 16, fontWeight: "bold", color: "#333" },
-  cardCrm: { fontSize: 13, color: "#888", marginTop: 2 },
-  cardValor: {
-    fontSize: 14,
-    color: "#27ae60",
-    fontWeight: "600",
-    marginTop: 4,
+  cardNome: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#333",
   },
+  cardCrm: { fontSize: 13, color: "#888", marginTop: 2 },
+  cardValor: { fontSize: 14, color: "#27ae60", fontWeight: "600", marginTop: 4 },
   cardSeta: { fontSize: 18, color: "#79059C", marginLeft: 8 },
   vazio: {
     backgroundColor: "rgba(255,255,255,0.1)",
@@ -122,5 +123,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  vazioTexto: { color: "#fff", fontSize: 14, textAlign: "center" },
+  vazioTexto: {
+    color: "#fff",
+    fontSize: 14,
+    textAlign: "center",
+  },
 });

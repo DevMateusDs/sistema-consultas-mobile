@@ -13,7 +13,6 @@ import {
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
 import { buscarPacientePorCpf } from "../../services/pacienteService";
-import { mensagemErroApi } from "../../utils/apiErro";
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, "LoginPaciente">;
@@ -38,8 +37,8 @@ export default function LoginPacienteScreen({ navigation }: Props) {
         pacienteId: paciente.id,
         pacienteNome: paciente.nome,
       });
-    } catch (e) {
-      setErro(mensagemErroApi(e, "CPF nao encontrado. Verifique ou crie um cadastro."));
+    } catch {
+      setErro("CPF nao encontrado. Verifique ou crie um cadastro.");
     } finally {
       setCarregando(false);
     }

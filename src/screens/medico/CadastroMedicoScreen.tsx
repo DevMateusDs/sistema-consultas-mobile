@@ -15,7 +15,6 @@ import { RootStackParamList } from "../../navigation/types";
 import { cadastrarMedico } from "../../services/medicoService";
 import { listarEspecialidades } from "../../services/especialidadeService";
 import { Especialidade } from "../../types/especialidade";
-import { mensagemErroApi } from "../../utils/apiErro";
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, "CadastroMedico">;
@@ -61,7 +60,7 @@ export default function CadastroMedicoScreen({ navigation }: Props) {
         ativo: true,
         valorConsulta: valorNum,
       });
-      if (medico.valorConsulta === null) {
+      if (medico.valorConsulta == null) {
         navigation.replace("PerfilMedico", {
           medicoId: medico.id,
           medicoNome: medico.nome,
@@ -72,8 +71,8 @@ export default function CadastroMedicoScreen({ navigation }: Props) {
           medicoNome: medico.nome,
         });
       }
-    } catch (e) {
-      setErro(mensagemErroApi(e, "Erro ao cadastrar. CRM ja pode estar em uso."));
+    } catch {
+      setErro("Erro ao cadastrar. CRM ja pode estar em uso.");
     } finally {
       setSalvando(false);
     }
@@ -95,9 +94,7 @@ export default function CadastroMedicoScreen({ navigation }: Props) {
 
         <View style={styles.formulario}>
           {/* Nome */}
-          <Text style={styles.label}>
-            Nome completo * (inclua Dr. ou Dra.)
-          </Text>
+          <Text style={styles.label}>Nome completo * (inclua Dr. ou Dra.)</Text>
           <TextInput
             style={styles.input}
             placeholder="Ex: Dr. Carlos Oliveira"
@@ -234,12 +231,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     color: "#333",
   },
-  hint: {
-    fontSize: 12,
-    color: "#999",
-    marginBottom: 16,
-    marginTop: -12,
-  },
+  hint: { fontSize: 12, color: "#999", marginBottom: 16, marginTop: -12 },
   seletor: {
     flexDirection: "row",
     justifyContent: "space-between",

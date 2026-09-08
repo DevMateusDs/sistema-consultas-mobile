@@ -116,9 +116,7 @@ export default function AgendarConsultaScreen({ navigation, route }: Props) {
           />
 
           {/* Seletor de hora */}
-          <Text style={[styles.label, { marginTop: 8 }]}>
-            Hora da Consulta *
-          </Text>
+          <Text style={[styles.label, { marginTop: 8 }]}>Hora da Consulta *</Text>
           <DateTimePicker
             value={dataHora}
             mode="time"
@@ -134,7 +132,7 @@ export default function AgendarConsultaScreen({ navigation, route }: Props) {
           <Text style={styles.label}>Valor da Consulta</Text>
           <View style={styles.campoValorTravado}>
             <Text style={styles.campoValorTexto}>
-              {medicoValor !== null
+              {medicoValor != null
                 ? `R$ ${medicoValor.toFixed(2).replace(".", ",")}`
                 : "A definir pelo medico"}
             </Text>
@@ -186,12 +184,7 @@ export default function AgendarConsultaScreen({ navigation, route }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#79059C" },
-  content: {
-    flexGrow: 1,
-    padding: 24,
-    paddingTop: 20,
-    paddingBottom: 40,
-  },
+  content: { flexGrow: 1, padding: 24, paddingTop: 20, paddingBottom: 40 },
   titulo: {
     fontSize: 24,
     fontWeight: "bold",
@@ -210,28 +203,15 @@ const styles = StyleSheet.create({
     padding: 14,
     marginBottom: 20,
   },
-  infoMedicoLabel: {
-    fontSize: 12,
-    color: "#79059C",
-    fontWeight: "600",
-  },
+  infoMedicoLabel: { fontSize: 12, color: "#79059C", fontWeight: "600" },
   infoMedicoNome: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#4a0070",
     marginTop: 2,
   },
-  label: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#555",
-    marginBottom: 4,
-  },
-  hint: {
-    fontSize: 12,
-    color: "#999",
-    marginBottom: 12,
-  },
+  label: { fontSize: 14, fontWeight: "600", color: "#555", marginBottom: 4 },
+  hint: { fontSize: 12, color: "#999", marginBottom: 12 },
   dataSelecionada: {
     fontSize: 14,
     color: "#79059C",
@@ -290,3 +270,4 @@ const styles = StyleSheet.create({
   botaoDesabilitado: { backgroundColor: "#b57bc0" },
   botaoTexto: { color: "#fff", fontSize: 16, fontWeight: "bold" },
 });
+

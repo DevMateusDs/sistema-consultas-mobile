@@ -52,7 +52,9 @@ export default function EscolhaEspecialidadeScreen({
               style={{ marginTop: 40 }}
             />
           ) : (
-            <Text style={styles.vazio}>Nenhuma especialidade encontrada.</Text>
+            <Text style={styles.vazio}>
+              Nenhuma especialidade encontrada.
+            </Text>
           )
         }
         renderItem={({ item }) => (
@@ -69,7 +71,7 @@ export default function EscolhaEspecialidadeScreen({
             activeOpacity={0.8}
           >
             <Text style={styles.cardNome}>{item.nome}</Text>
-            <Text style={styles.cardSeta}>{">"}</Text>
+            <Text style={styles.cardSeta}>-&gt;</Text>
           </TouchableOpacity>
         )}
       />
@@ -102,10 +104,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardSeta: { fontSize: 18, color: "#79059C" },
-  vazio: {
-    color: "#fff",
-    textAlign: "center",
-    marginTop: 40,
-    fontSize: 14,
-  },
+  vazio: { color: "#fff", textAlign: "center", marginTop: 40, fontSize: 14 },
 });
